@@ -12,11 +12,25 @@ $(() ->
         $("#area").off("click")
         $("#area").hide()
         $("#skip").hide()
+        $("title").html("bday!")
 
-        $("#message").text('''
-        Поздравляем, Вы прошли строжайший отбор и приглашены
-        на день рождения Никиты!
-        ''')
+        prefix = ""
+        if skip
+
+            prefix = "не"
+
+        $("#message").css("width", img.width)
+        $("#message").html("""
+        Поздравляем, Вы #{prefix} прошли строжайший интеллектуальный отбор и
+        приглашены на день рождения Никиты!<br>
+        Соизвольте явиться 28(суббота) сентября сего года в мою скромную
+        усадьбу аккурат к 20 часам (кто забыл адрес — высылайте голубиную почту).
+        На входе будет проведён строгий алкогольный контроль, у того у кого
+        не будет обнаружен сосуд с увеселительным напитком возникнут проблемы
+        со входом на бал.
+        """)
+
+        $("body").append("<br><img src=#{img.src}>")
 
     shuffle = () ->
 
@@ -119,9 +133,13 @@ $(() ->
         redraw()
 
     files = [
+        "Acueducto_de_Segovia_01.png",
+        "Brightly_lit_STS-135_on_launch_pad_39a.png",
         "Cabo_Espichel,_Portugal,_2012-08-18,_DD_08.png",
         "Furnadoia_de_Seceda_y_Resciesa.png",
-        "Geirangerfjord_from_Ørnesvingen,_2013_June.png"
+        "Geirangerfjord_from_Ørnesvingen,_2013_June.png",
+        "Grot_pavilion_in_Tsarskoe_Selo.png",
+        "Måbødalen,_2011_August.png"
     ]
     img.src = files[Math.min(files.length - 1, Math.floor(Math.random() * files.length))]
 )

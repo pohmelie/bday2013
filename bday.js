@@ -11,13 +11,21 @@
     img = new Image();
     ctx = $("#area")[0].getContext("2d");
     win = function(skip) {
+      var prefix;
       if (skip == null) {
         skip = false;
       }
       $("#area").off("click");
       $("#area").hide();
       $("#skip").hide();
-      return $("#message").text('Поздравляем, Вы прошли строжайший отбор и приглашены\nна день рождения Никиты!');
+      $("title").html("bday!");
+      prefix = "";
+      if (skip) {
+        prefix = "не";
+      }
+      $("#message").css("width", img.width);
+      $("#message").html("Поздравляем, Вы " + prefix + " прошли строжайший интеллектуальный отбор и\nприглашены на день рождения Никиты!<br>\nСоизвольте явиться 28(суббота) сентября сего года в мою скромную\nусадьбу аккурат к 20 часам (кто забыл адрес — высылайте голубиную почту).\nНа входе будет проведён строгий алкогольный контроль, у того у кого\nне будет обнаружен сосуд с увеселительным напитком возникнут проблемы\nсо входом на бал.");
+      return $("body").append("<br><img src=" + img.src + ">");
     };
     shuffle = function() {
       var i, j, order_pass, r, sum, _i, _j, _ref;
@@ -110,7 +118,7 @@
       $("#area").on("click", click);
       return redraw();
     };
-    files = ["Cabo_Espichel,_Portugal,_2012-08-18,_DD_08.png", "Furnadoia_de_Seceda_y_Resciesa.png", "Geirangerfjord_from_Ørnesvingen,_2013_June.png"];
+    files = ["Acueducto_de_Segovia_01.png", "Brightly_lit_STS-135_on_launch_pad_39a.png", "Cabo_Espichel,_Portugal,_2012-08-18,_DD_08.png", "Furnadoia_de_Seceda_y_Resciesa.png", "Geirangerfjord_from_Ørnesvingen,_2013_June.png", "Grot_pavilion_in_Tsarskoe_Selo.png", "Måbødalen,_2011_August.png"];
     return img.src = files[Math.min(files.length - 1, Math.floor(Math.random() * files.length))];
   });
 
